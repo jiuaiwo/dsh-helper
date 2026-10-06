@@ -1,0 +1,29 @@
+{
+  "//": "类型检查：只检查**本仓自研**且顶部标了 // @ts-check 的 Host 文件，不碰构建产物 lib/client.js。",
+  "//checkJs": "全局 checkJs 关闭，靠各文件顶部的 // @ts-check 逐文件开启 —— 这样被它们 import 的文件（croner、zod、上游包）不会一起被检查。",
+  "//include": "凡带 // @ts-check 的自研文件都必须在 include 里列名，否则那个标记是**死**的：tsc 根本不会读它，写错了也没人拦。新增这类文件时记得同步这里（tools/host-smoke.mjs 有一条断言盯这个不变量）。",
+  "//与 T专家 的一致性": "compilerOptions 与 dsh-expert/tsconfig.json 保持同一套取值，两个仓库的 typecheck 行为一致，便于对照排查。",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2023"
+    ],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "lib/schedule.js",
+    "lib/schedule-copy.js",
+    "lib/schedule-remote.js",
+    "lib/schedule-schemas.js"
+  ]
+}

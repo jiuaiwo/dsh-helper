@@ -1,0 +1,8 @@
+# dsh-helper：在任意会话里把文件投递到 IM（微信）。
+# 图片（按魔数识别，扩展名兜底）自动改用图片消息发送，其余按文件发送；
+# 可用 imageAsPicture 开关关掉，回到一律发文件。
+# 依赖 dsh-im 已装好并接入机器人：本插件只读复用它的微信协议模块
+# （src/channels/weixin/）与账号配置来发送，不修改它的源码，也不占用它的服务。
+- insert:
+    - id: dsh-helper
+      name: 'dsh-helper'
