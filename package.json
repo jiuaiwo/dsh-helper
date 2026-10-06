@@ -1,0 +1,122 @@
+{
+  "name": "dsh-helper",
+  "version": "0.16.6",
+  "type": "module",
+  "description": "给 DeepSeek Harness 打补丁：在任意会话把文件主动投递到 IM（微信）、按 cron 跑定时任务、工作区活动呼吸灯（含折叠未读提示）、会话标题栏活跃指示、对话完成提示音，另有一键重启按钮。",
+  "icon": "icon.svg",
+  "license": "MIT",
+  "author": "jiuaiwo",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "im",
+    "weixin",
+    "wechat",
+    "file-transfer",
+    "schedule",
+    "cron",
+    "restart",
+    "notification",
+    "sound",
+    "appearance",
+    "vibrancy"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiuaiwo/dsh-helper.git"
+  },
+  "homepage": "https://github.com/jiuaiwo/dsh-helper#readme",
+  "bugs": {
+    "url": "https://github.com/jiuaiwo/dsh-helper/issues"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./host/dsh-cli": "./src/host/dsh-cli.js",
+    "./host/http-trust": "./src/host/http-trust.js",
+    "./host/im-connect": "./src/host/im-connect.js",
+    "./host/restart": "./src/host/restart.js",
+    "./schedule-remote": "./lib/schedule-remote.js",
+    "./locale/*": "./locale/*"
+  },
+  "files": [
+    "lib",
+    "locale",
+    "icon.svg",
+    "src/host",
+    "cordis.patch.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "docs/*.md",
+    "docs/*.png"
+  ],
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "node tools/build-client.mjs",
+    "smoke": "node tools/client-smoke.mjs",
+    "preview": "node tools/preview.mjs",
+    "host-smoke": "node tools/host-smoke.mjs",
+    "verify": "npm run typecheck && npm run build && npm run smoke && npm run render-smoke && npm run host-smoke",
+    "verify:ci": "node tools/verify-ci.mjs",
+    "render-smoke": "node tools/render-smoke.mjs",
+    "preview-settings": "node tools/preview-settings.mjs",
+    "prepublishOnly": "npm run verify && npm pack --dry-run"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-typert-protocol": ">=0.1.5-rc.1",
+    "@michengai/dsh-im-connect": ">=0.1.50",
+    "@xmanrui/dsh-im": ">=4.24.0",
+    "react": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@michengai/dsh-im-connect": {
+      "optional": true
+    },
+    "@xmanrui/dsh-im": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "~4.0.4",
+    "@deepseek-ai/dsh-typert-protocol": "^0.1.7-rc.1",
+    "@types/node": "^22.20.4",
+    "esbuild": "^0.25.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "croner": "^9.1.0",
+    "zod": "^4.4.3"
+  }
+}
