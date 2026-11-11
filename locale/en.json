@@ -1,0 +1,5 @@
+{
+  "meta": {
+    "description": "Patches for DeepSeek Harness: deliver files from any session to IM (WeChat), run scheduled cron tasks, a workspace activity glow with collapsed-unread hints, a session-header activity indicator, a chime when a reply finishes, and a one-click restart button."
+  }
+}
