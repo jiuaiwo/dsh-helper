@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" fill="none">
+  <title>辅助补丁</title>
+  <defs>
+    <linearGradient id="hp-bubble" x1="4" y1="6" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5B8CFF"/>
+      <stop offset="1" stop-color="#4D6BFE"/>
+    </linearGradient>
+    <linearGradient id="hp-patch" x1="25" y1="24" x2="35" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5BF0DB"/>
+      <stop offset="1" stop-color="#3BB8E8"/>
+    </linearGradient>
+  </defs>
+  <path d="M9 6.6h13.6a5 5 0 0 1 5 5v7.2a5 5 0 0 1-5 5H13.6L6.8 30.2V23.8H9a5 5 0 0 1-5-5v-7.2a5 5 0 0 1 5-5Z" fill="url(#hp-bubble)"/>
+  <path d="M15.7 20.4V11.6M11.5 15.8 15.7 11.6 19.9 15.8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="25.4" y="24.4" width="9.2" height="9.2" rx="2.8" fill="url(#hp-patch)" stroke="#f7f7f8" stroke-width="1.1"/>
+  <path d="M30 26.4v5.2M27.4 29h5.2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/>
+</svg>
